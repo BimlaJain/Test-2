@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Project Implementation",
+  title: "Test-2",
   description: "Transforming Secure, Modern Development with AdaptsAI",
   openGraph: {
-    title: "Project Implementation",
+    title: "Test-2",
     description: "Transforming Secure, Modern Development with AdaptsAI",
     images: [
       {

@@ -36,17 +36,13 @@ const Slider = () => {
         </h2>
         <div className="overflow-hidden pt-[60px] max-w-[1440px]">
           <div className="flex w-max slider-item left-0 ">
-            {/* gsap content one */}
+            {/* gsap slider one */}
             <div className="min-w-[1440px]">
               <div
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <h3
-                    className={`font-roboto font-black text-[256px] leading-[100%] text-white`}
-                  >
-                    01
-                  </h3>
+                  <img src="../assets/images/png/one.png" alt="one" className="max-w-[297px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     AI Chatbots don’t create enterprse-grade
                     <span className="bg-gradient-to-tl from-pink to-sky-blue bg-clip-text text-transparent"> apps</span>
@@ -67,17 +63,13 @@ const Slider = () => {
                 />
               </div>
             </div>
-            {/* gsap content two */}
+            {/* gsap slider two */}
             <div className="min-w-[1440px]">
               <div
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <h3
-                    className={`font-roboto font-black text-[256px] leading-[100%] text-white`}
-                  >
-                    02
-                  </h3>
+                  <img src="../assets/images/png/two.png" alt="one" className="max-w-[297px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     Modernization Doesn’t Have to Mean Failure
                   </h4>
@@ -100,17 +92,13 @@ const Slider = () => {
                 />
               </div>
             </div>
-            {/* gsap content three*/}
+            {/* gsap slider three*/}
             <div className="min-w-[1440px]">
               <div
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <h3
-                    className={`font-roboto font-black text-[256px] leading-[100%] text-white`}
-                  >
-                    03
-                  </h3>
+                  <img src="../assets/images/png/three.png" alt="one" className="max-w-[297px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     Protected from Legal Risks and IP liability
                   </h4>
@@ -124,7 +112,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/images/png/second-image.png"
+                  src="/assets/images/png/third-image.png"
                   alt="slider"
                   width={614}
                   height={417}
@@ -132,17 +120,13 @@ const Slider = () => {
                 />
               </div>
             </div>
-            {/* gsap content four */}
+            {/* gsap slider four */}
             <div className="min-w-[1440px]">
               <div
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <h3
-                    className={`font-roboto font-black text-[256px] leading-[100%] text-white`}
-                  >
-                    04
-                  </h3>
+                  <img src="../assets/images/png/four.png" alt="one" className="max-w-[297px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     AI generated apps need maintenance too!
                   </h4>
@@ -157,7 +141,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/images/png/second-image.png"
+                  src="/assets/images/png/fourth-image.png"
                   alt="slider"
                   width={614}
                   height={417}
@@ -167,7 +151,6 @@ const Slider = () => {
             </div>
           </div>
         </div>
-        {/* Slider End  */}
       </div>
     </div>
   );
