@@ -12,6 +12,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        "poppins": ["Poppins", "serif"],
+        "Monsterrat": ["Montserrat", "serif"],
+        "Roboto": ["Roboto", "serif"],
+      }
     },
   },
   plugins: [],
