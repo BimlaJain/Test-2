@@ -28,9 +28,9 @@ const Slider = () => {
     );
   }, []);
   return (
-    <div className="bg-light-black slider-section min-h-[1014px] mx-auto flex justify-center items-center">
+    <div className="bg-light-black slider-section lg:min-h-[1014px] min-h-[800px] px-4 mx-auto flex justify-center items-center">
       <div className="flex flex-col justify-center items-center">
-        <h2 className="font-medium text-5xl leading-[57.6px] text-white text-center max-w-[830px] mx-auto">
+        <h2 className="font-medium md:text-5xl text-2xl md:leading-[57.6px] text-white text-center md:max-w-[830px] max-w-[320px] mx-auto">
           Transforming Secure, Modern{" "}
           <span className="bg-gradient-to-tl from-sky-blue to-pink bg-clip-text text-transparent">Development</span> with AdaptsAI
         </h2>
@@ -39,10 +39,10 @@ const Slider = () => {
             {/* gsap slider one */}
             <div className="min-w-[1440px]">
               <div
-                className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
+                className={`flex gap-[65px] items-center container lg:max-w-[1140px] sm:max-w-[600px] max-w-[350px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <img src="../assets/images/png/one.png" alt="one" className="max-w-[297px]" />
+                  <img src="../assets/images/png/one.png" alt="one" className="md:max-w-[297px] max-w-[150px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     AI Chatbots don’t create enterprse-grade
                     <span className="bg-gradient-to-tl from-pink to-sky-blue bg-clip-text text-transparent"> apps</span>
@@ -69,7 +69,7 @@ const Slider = () => {
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <img src="../assets/images/png/two.png" alt="one" className="max-w-[297px]" />
+                  <img src="../assets/images/png/two.png" alt="one" className="md:max-w-[297px] max-w-[150px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     Modernization Doesn’t Have to Mean Failure
                   </h4>
@@ -98,7 +98,7 @@ const Slider = () => {
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <img src="../assets/images/png/three.png" alt="one" className="max-w-[297px]" />
+                  <img src="../assets/images/png/three.png" alt="one" className="md:max-w-[297px] max-w-[150px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     Protected from Legal Risks and IP liability
                   </h4>
@@ -126,7 +126,7 @@ const Slider = () => {
                 className={`flex gap-[65px] items-center container max-w-[1140px] mx-auto`}
               >
                 <div className="flex flex-col max-w-[461px]">
-                  <img src="../assets/images/png/four.png" alt="one" className="max-w-[297px]" />
+                  <img src="../assets/images/png/four.png" alt="one" className="md:max-w-[297px] max-w-[150px]" />
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     AI generated apps need maintenance too!
                   </h4>
