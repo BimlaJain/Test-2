@@ -11,6 +11,8 @@ export default {
       colors: {
         'light-black': "#010101",
         'blue': "#7E68FF",
+        "pink": "#DF2BFF",
+        "sky-blue": "#00B7FF",
       },
       fontFamily: {
         "poppins": ["Poppins", "serif"],

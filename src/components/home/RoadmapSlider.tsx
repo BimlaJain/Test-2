@@ -28,11 +28,11 @@ const Slider = () => {
     );
   }, []);
   return (
-    <div className="light-black slider-section min-h-[1014px] mx-auto flex justify-center items-center">
+    <div className="bg-light-black slider-section min-h-[1014px] mx-auto flex justify-center items-center">
       <div className="flex flex-col justify-center items-center">
         <h2 className="font-medium text-5xl leading-[57.6px] text-white text-center max-w-[830px] mx-auto">
           Transforming Secure, Modern{" "}
-          <span className="text-blue">Development</span> with AdaptsAI
+          <span className="bg-gradient-to-tl from-sky-blue to-pink bg-clip-text text-transparent">Development</span> with AdaptsAI
         </h2>
         <div className="overflow-hidden pt-[60px] max-w-[1440px]">
           <div className="flex w-max slider-item left-0 ">
@@ -49,7 +49,7 @@ const Slider = () => {
                   </h3>
                   <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
                     AI Chatbots don’t create enterprse-grade
-                    <span className="text-blue">apps</span>
+                    <span className="bg-gradient-to-tl from-pink to-sky-blue bg-clip-text text-transparent"> apps</span>
                   </h4>
                   <p className="font-poppins max-sm:text-sm leading-[25px] max-sm:leading-5 text-white mt-4">
                     Bootstrap end to end application package including
@@ -59,7 +59,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/image/png/first-image.png"
+                  src="/assets/images/png/first-image.png"
                   alt="slider"
                   width={614}
                   height={417}
@@ -92,7 +92,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/image/png/second-image.png"
+                  src="/assets/images/png/second-image.png"
                   alt="slider"
                   width={614}
                   height={417}
@@ -124,7 +124,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/image/png/second-image.png"
+                  src="/assets/images/png/second-image.png"
                   alt="slider"
                   width={614}
                   height={417}
@@ -157,7 +157,7 @@ const Slider = () => {
                   </p>
                 </div>
                 <Image
-                  src="/assets/image/png/second-image.png"
+                  src="/assets/images/png/second-image.png"
                   alt="slider"
                   width={614}
                   height={417}
