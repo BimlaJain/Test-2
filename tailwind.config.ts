@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'light-black': "#010101",
+        'blue': "#7E68FF",
       },
       fontFamily: {
         "poppins": ["Poppins", "serif"],
