@@ -1,11 +1,27 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useState ,useEffect , useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Slider = () => {
+  const progressRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const steps = [
+    { icon: "🤖", label: "Bot" },
+    { icon: "🔲", label: "Grid" },
+    { icon: "📄", label: "Document" },
+    { icon: "AI", label: "AI" },
+  ];
+
+  useEffect(() => {
+    gsap.to(progressRef.current, {
+      width: `${(activeIndex / (steps.length - 1)) * 100}%`,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  }, [activeIndex]);
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -34,6 +50,32 @@ const Slider = () => {
           Transforming Secure, Modern{" "}
           <span className="bg-gradient-to-tl from-sky-blue to-pink bg-clip-text text-transparent">Development</span> with AdaptsAI
         </h2>
+        <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-700 transform -translate-y-1/2"></div>
+        <div
+          ref={progressRef}
+          className="absolute top-1/2 left-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 transform -translate-y-1/2"
+        ></div>
+
+        {/* Steps */}
+        <div className="relative flex justify-between items-center">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="relative flex flex-col items-center cursor-pointer"
+              onClick={() => setActiveIndex(index)}
+            >
+              <div
+                className={`flex items-center justify-center w-12 h-12 rounded-lg border-2 transition-all ${activeIndex === index
+                    ? "bg-gradient-to-br from-blue-500 to-purple-500 text-white border-transparent"
+                    : "bg-gray-900 text-gray-400 border-gray-700"
+                  }`}
+              >
+                {step.icon}
+              </div>
+              <span className="mt-2 text-sm text-gray-400">{step.label}</span>
+            </div>
+          ))}
+        </div>
         <div className="overflow-hidden pt-[60px] max-w-[1440px]">
           <div className="flex w-max slider-item left-0 ">
             {/* gsap slider one */}
@@ -133,7 +175,7 @@ const Slider = () => {
                   <p className="font-poppins max-sm:text-sm leading-[25px] max-sm:leading-5 text-white mt-4">
                     Business applications demand ongoing maintenance to address
                     new vulnerabilities, ensure reliability, and deliver updates
-                    or bug fixes. <br /> <br />
+                    or bug fixes. <br/> <br/>
                     With AdaptsAI's advanced context awareness, maintenance
                     becomes effortless—minimizing code ramp-up time,
                     streamlining troubleshooting, and simplifying enhancements

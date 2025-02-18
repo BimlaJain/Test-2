@@ -27,7 +27,6 @@ const ToDoFormPage = () => {
     const [errors, setErrors] = useState(false);
     const [duplicateEmailError, setDuplicateEmailError] = useState(false);
     const [submittedData, setSubmittedData] = useState<IFormvalue[]>([]);
-    const router = useRouter();
 
     const emailRegax = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
@@ -54,7 +53,7 @@ const ToDoFormPage = () => {
             emailRegax.test(formValue.email) &&
             formValue.password.length >= 6 &&
             formValue.confirmpassword.length >= 6 &&
-            formValue.phone.length === 11
+            formValue.phone.length === 10
         ) {
             if (isDuplicateEmail(formValue.email)) {
                 setDuplicateEmailError(true);
@@ -130,7 +129,7 @@ const ToDoFormPage = () => {
                         <p className="text-red-500">
                             {errors && formValue.phone.length === 0
                                 ? "Required"
-                                : formValue.phone.length !== 11 && formValue.phone.length > 0
+                                : formValue.phone.length !== 10 && formValue.phone.length > 0
                                     ? "Give a valid Number"
                                     : ""}
                         </p>
