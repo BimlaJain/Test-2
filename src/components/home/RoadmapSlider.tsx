@@ -118,7 +118,7 @@ const Slider = () => {
             <div ref={sliderWrapperRef} className="flex w-max slider-item left-0">
               {SLIDER_DATA.map((slide, index) => (
                 <div key={index} className="max-w-[1440px]">
-                  <div className="xl:flex gap-[65px] items-center container lg:max-w-[1140px] sm:max-w-[600px] max-w-[350px] mx-auto">
+                  <div className="xl:flex gap-[65px] items-center container max-w-[1140px] mx-auto">
                     <div className="flex flex-col max-w-[461px]">
                       <img src={slide.img} alt="slide" className="md:max-w-[297px] max-w-[150px]" />
                       <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
