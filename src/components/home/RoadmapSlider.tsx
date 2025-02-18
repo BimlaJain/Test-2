@@ -8,9 +8,9 @@ import { PROGRESS_ICONS, SLIDER_DATA } from "@/utils/helper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Slider = () => {
+const Slider:React.FC = () => {
   const progressRef = useRef(null);
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const sliderWrapperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
