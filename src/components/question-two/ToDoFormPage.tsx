@@ -1,6 +1,6 @@
 "use client";
-import React, { FormEvent, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { FormEvent, useState } from "react";
+import Link from "next/link";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -78,7 +78,16 @@ const ToDoFormPage = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center pb-10 px-4 pt-[30px]">
+       <>
+            <div className="flex justify-center items-center gap-3 py-10">
+                <Link href={"/test/question-1/dashboard"} className="text-white bg-black px-4 py-2 rounded-xl hover:bg-white hover:text-black border border-black transition-all duration-500 ">
+                    Question-1
+                </Link>
+                <Link href={"/test/question-2/dashboard"} className="text-white bg-black px-4 py-2 rounded-xl hover:bg-white hover:text-black border border-black transition-all duration-500">
+                    Question-2
+                </Link>
+            </div>
+         <div className="flex justify-center items-center pb-10 px-4 pt-[30px]">
             <div className="container lg:max-w-[750px] md:max-w-[650px] mx-auto">
                 <form className="pt-[31px]" onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -236,7 +245,8 @@ const ToDoFormPage = () => {
                     </div>
                 )}
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

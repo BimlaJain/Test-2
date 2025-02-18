@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState ,useEffect , useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -44,7 +45,17 @@ const Slider = () => {
     );
   }, []);
   return (
+    <>
+    <div className="flex justify-center items-center gap-3 py-4">
+        <Link href={"/test/question-1/dashboard"} className="text-white bg-black px-4 py-2 rounded-xl hover:bg-white hover:text-black border border-black transition-all duration-500 ">
+          Question-1
+        </Link>
+        <Link href={"/test/question-2/dashboard"} className="text-white bg-black px-4 py-2 rounded-xl hover:bg-white hover:text-black border border-black transition-all duration-500">
+          Question-2
+        </Link>
+      </div>
     <div className="bg-light-black slider-section lg:min-h-[1014px] min-h-[800px] px-4 mx-auto flex justify-center items-center">
+      
       <div className="flex flex-col justify-center items-center">
         <h2 className="font-medium md:text-5xl text-2xl md:leading-[57.6px] text-white text-center md:max-w-[830px] max-w-[320px] mx-auto">
           Transforming Secure, Modern{" "}
@@ -194,7 +205,8 @@ const Slider = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
