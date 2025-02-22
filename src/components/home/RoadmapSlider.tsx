@@ -1,72 +1,149 @@
 "use client";
-import Image from "next/image";
+import { PROGRESS_ICONS, SLIDER_DATA } from "../../utils/helper";
+import gsap from "gsap";
 import Link from "next/link";
-import React, { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import Image from "next/image";
+import React, { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PROGRESS_ICONS, SLIDER_DATA } from "@/utils/helper";
-
 gsap.registerPlugin(ScrollTrigger);
+interface SliderData {
+  numberImage: string;
+  numberImageAlt: string;
+  title: string;
+  gradientText: string;
+  description: string;
+  secondDescription: string;
+  image: string;
+  imageAlt: string;
+}
 
-const Slider:React.FC = () => {
-  const progressRef = useRef(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const sliderWrapperRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+interface ProgressIcon {
+  img: string;
+  alt: string;
+}
 
+const RoadmapSlider: React.FC = () => {
+  
   useEffect(() => {
-    const totalSlides = SLIDER_DATA.length;
-    const slideWidth = sliderWrapperRef.current ? sliderWrapperRef.current.scrollWidth / totalSlides : 0;
-
-    if (progressRef.current) {
-      gsap.to(progressRef.current, {
-        width: `${(activeIndex / (totalSlides - 1)) * 100}%`,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    }
-
-    if (sliderWrapperRef.current) {
-      gsap.to(sliderWrapperRef.current, {
-        x: `-${activeIndex * slideWidth}px`,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    }
-  }, [activeIndex]);
-
-
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sliderRef.current,
-          start: "top top",
-          end: "200%",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const newIndex = Math.round(progress * (SLIDER_DATA.length - 1));
-            setActiveIndex(newIndex);
-          },
+    let mm = gsap.matchMedia();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#hero",
+        markers: true,
+        start: "30% top",
+        end: "400% center",
+        pin: true,
+        scrub: 2,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const newIndex = Math.round(progress * (SLIDER_DATA.length - 1));
         },
-      });
-
-      tl.to(sliderWrapperRef.current, {
-        x: "-75%",
-        duration: 5,
-        ease: "none",
-      });
+      },
     });
-
-    return () => ctx.revert();
-  }, []);
+    mm.add("(min-width:1200px) and (max-width:1596.99px)", () => {
+      tl.fromTo(
+        ".my-slider",
+        {
+          x: 100,
+        },
+        {
+          xPercent: -260,
+          duration: 10,
+        },
+        "0"
+      );
+      tl.fromTo(
+        ".custom-line",
+        {
+          left: 0,
+          width: 180,
+        },
+        {
+          width: "100%",
+          duration: 11,
+        },
+        "0"
+      );
+    });
+    mm.add("(min-width:1000px) and (max-width:1200.99px)", () => {
+      tl.fromTo(
+        ".my-slider",
+        {
+          x: 0,
+        },
+        {
+          xPercent: -330,
+          duration: 10,
+        },
+        "0"
+      );
+      tl.fromTo(
+        ".custom-line",
+        {
+          left: 0,
+          width: 30,
+        },
+        {
+          width: "100%",
+          duration: 11,
+        },
+        "0"
+      );
+    });
+    mm.add("(min-width:650px) and (max-width:999.99px)", () => {
+      tl.fromTo(
+        ".my-slider",
+        {
+          x: 0,
+        },
+        {
+          xPercent: -320,
+          duration: 10,
+        },
+        "0"
+      );
+      tl.fromTo(
+        ".custom-line",
+        {
+          left: 0,
+          width: 50,
+        },
+        {
+          width: "100%",
+          duration: 11,
+        },
+        "0"
+      );
+    });
+    mm.add("(min-width:300px) and (max-width:649.99px)", () => {
+      tl.fromTo(
+        ".my-slider",
+        {
+          x: 0,
+        },
+        {
+          xPercent: -340,
+          duration: 10,
+        },
+        "0"
+      );
+      tl.fromTo(
+        ".custom-line",
+        {
+          left: 0,
+          width: 50,
+        },
+        {
+          width: "100%",
+          duration: 11,
+        },
+        "0"
+      );
+    });
+  });
 
   return (
     <>
-      {/* Navigation Links */}
       <div className="flex justify-center items-center gap-3 py-4">
         <Link href="/test/question-1/dashboard">
           <span className="text-white bg-black px-4 py-2 rounded-xl hover:bg-white hover:text-black border border-black transition-all duration-500 cursor-pointer">
@@ -79,70 +156,72 @@ const Slider:React.FC = () => {
           </span>
         </Link>
       </div>
-
-      {/* Slider Section */}
-      <div ref={sliderRef} className="relative bg-light-black slider-section lg:min-h-[1014px] min-h-[800px] px-4 mx-auto flex justify-center items-center">
-        <div className="flex flex-col justify-center items-center w-full">
-          <h2 className="font-medium md:text-5xl text-2xl md:leading-[57.6px] text-white text-center md:max-w-[830px] max-w-[320px] mx-auto">
+      <div
+        id="hero"
+        className="bg-black pt-[156px] max-lg:pt-32 max-sm:pt-28 pb-28 overflow-hidden min-h-screen"
+      >
+        <div className="max-w-[1172px] mx-auto px-4">
+          <h2 className="max-w-[830px] mx-auto font-medium text-5xl max-md:text-4xl max-sm:text-3xl leading-[57.6px] text-white text-center">
             Transforming Secure, Modern{" "}
-            <span className="bg-gradient-to-tl from-sky-blue to-pink bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink to-sky-blue bg-clip-text text-transparent">
               Development
             </span>{" "}
             with AdaptsAI
           </h2>
-
-          {/* Progress Bar */}
-          
-
-          {/* Steps Navigation */}
-          <div className="relative flex justify-between items-center mt-6 w-full max-w-[1137px]">
-            {PROGRESS_ICONS.map((step, index) => (
-              <div key={index} className="relative flex flex-col items-center cursor-pointer" onClick={() => setActiveIndex(index)}>
+          <div className="flex items-center justify-between pt-[60px]">
+            {PROGRESS_ICONS.map((obj, i) => (
+              <div key={i} className="relative flex flex-col items-center cursor-pointer">
                 <div
-                  className={`flex items-center justify-center px-4 py-[18px] rounded-lg border-2 transition-all ${activeIndex === index
-                    ? "bg-gradient-to-br from-sky-blue to-purple-500 text-white border-transparent"
-                    : "bg-gray-900 text-gray-400 border-gray-700"
-                    }`}
+                  className={`flex items-center justify-center px-4 py-[18px] rounded-lg border-2 border-gray-600 transition-all `}
                 >
-                  <img src={step.img} alt={step.alt} className={activeIndex === index ? "filter brightness-0 invert" : ""} />
+                  <img src={obj.img} alt={obj.alt} />
                 </div>
               </div>
             ))}
           </div>
-          <div className="relative w-full mt-4">
-            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-700 transform -translate-y-1/2"></div>
-            <div ref={progressRef} className="absolute top-1/2 left-0 h-[2px] bg-gradient-to-r from-sky-blue to-purple-500 transform -translate-y-1/2 w-0"></div>
-          </div>
-          {/* GSAP Slider */}
-          <div className="overflow-hidden pt-[60px] max-w-[1440px] w-full">
-            <div ref={sliderWrapperRef} className="flex w-max slider-item left-0">
-              {SLIDER_DATA.map((slide, index) => (
-                <div key={index} className="max-w-[1440px]">
-                  <div className="xl:flex gap-[65px] items-center container max-w-[1140px] mx-auto">
-                    <div className="flex flex-col max-w-[461px]">
-                      <img src={slide.img} alt="slide" className="md:max-w-[297px] max-w-[150px]" />
-                      <h4 className="font-bold leading-[39.01px] text-[32px] text-white max-lg:leading-[30px] max-lg:text-2xl max-sm:leading-[26px] max-sm:text-xl">
-                        {slide.title}{" "}
-                        {slide.highlight && (
-                          <span className="bg-gradient-to-tl from-pink to-sky-blue bg-clip-text text-transparent">
-                            {slide.highlight}
-                          </span>
-                        )}
-                      </h4>
-                      <p className="font-poppins max-sm:text-sm leading-[25px] max-sm:leading-5 text-white mt-4">
-                        {slide.desc}
-                      </p>
-                    </div>
-                    <Image src={slide.slideImg} alt="slider" width={614} height={417} className="shadow-[0px_4px_58.7px_0px_#00DDFF26] rounded-xl h-[417px] max-lg:max-w-[314px]" />
-                  </div>
-                </div>
-              ))}
+        </div>
+        <div className="h-[1px] bg-light-gray line mt-3 max-w-[1440px] mx-auto">
+          <div className="custom-line h-[1px] bg-gradient-to-r from-pink to-sky-blue mt-3 max-w-[1440px] "></div>
+        </div>
+        <div className="px-4 mx-auto w-full flex sm:gap-28 max-sm:gap-10 pt-[60px] max-md:pt-10 my-slider">
+          {SLIDER_DATA.map((obj, i) => (
+            <div
+              key={i}
+              className="flex max-sm:flex-wrap items-center w-full sm:gap-10 mx-auto justify-between lg:min-w-[1172px] max-lg:min-w-[1000px] max-md:min-w-[700px] max-sm:min-w-[375px] px-4"
+            >
+              <div className="sm:max-w-[461px] mx-auto">
+                <Image
+                  src={obj.img}
+                  alt={obj.textAlt}
+                  width={297}
+                  height={187}
+                  className="pointer-events-none max-lg:h-[150px] max-lg:w-[200px] max-md:h-[70px] max-md:w-[100px] max-sm:h-[50px] max-sm:w-[50px]"
+                />
+                <h2 className="font-bold text-[32px] max-lg:text-2xl max-sm:text-xl max-sm:leading-6 leading-[39px] text-white">
+                  {obj.title}{" "}
+                  <span className="bg-gradient-to-r from-lightSky to-lightPurple bg-clip-text text-transparent">
+                    {obj.highlight}
+                  </span>
+                </h2>
+                <p className="font-poppins text-base max-md:text-sm max-sm:text-xs leading-[25px] text-white/90 pt-4">
+                  {obj.description} <br />
+                  <br />
+                </p>
+              </div>
+              <Image
+                src={obj.slideImg}
+                width={614}
+                height={427}
+                alt={obj.imageAlt}
+                className="max-lg:h-[350px] max-lg:w-[500px] max-md:h-[200px] max-md:w-[350px] max-sm:mt-1"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
   );
+
 };
 
-export default Slider;
+export default RoadmapSlider;
