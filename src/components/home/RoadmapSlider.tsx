@@ -3,144 +3,50 @@ import { PROGRESS_ICONS, SLIDER_DATA } from "../../utils/helper";
 import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-interface SliderData {
-  numberImage: string;
-  numberImageAlt: string;
-  title: string;
-  gradientText: string;
-  description: string;
-  secondDescription: string;
-  image: string;
-  imageAlt: string;
-}
-
-interface ProgressIcon {
-  img: string;
-  alt: string;
-}
 
 const RoadmapSlider: React.FC = () => {
-  
+  const [activeIcon, setActiveIcon] = useState(0);
+
   useEffect(() => {
     let mm = gsap.matchMedia();
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#hero",
-        markers: true,
         start: "30% top",
         end: "400% center",
         pin: true,
         scrub: 2,
         onUpdate: (self) => {
           const progress = self.progress;
-          const newIndex = Math.round(progress * (SLIDER_DATA.length - 1));
+          const newIndex = Math.round(progress * (PROGRESS_ICONS.length - 1));
+          setActiveIcon(newIndex);
         },
       },
     });
+
     mm.add("(min-width:1200px) and (max-width:1596.99px)", () => {
-      tl.fromTo(
-        ".my-slider",
-        {
-          x: 100,
-        },
-        {
-          xPercent: -260,
-          duration: 10,
-        },
-        "0"
-      );
-      tl.fromTo(
-        ".custom-line",
-        {
-          left: 0,
-          width: 180,
-        },
-        {
-          width: "100%",
-          duration: 11,
-        },
-        "0"
-      );
+      tl.fromTo(".my-slider", { x: 100 }, { xPercent: -260, duration: 10 }, "0");
+      tl.fromTo(".custom-line", { left: 0, width: 180 }, { width: "100%", duration: 11 }, "0");
     });
+
     mm.add("(min-width:1000px) and (max-width:1200.99px)", () => {
-      tl.fromTo(
-        ".my-slider",
-        {
-          x: 0,
-        },
-        {
-          xPercent: -330,
-          duration: 10,
-        },
-        "0"
-      );
-      tl.fromTo(
-        ".custom-line",
-        {
-          left: 0,
-          width: 30,
-        },
-        {
-          width: "100%",
-          duration: 11,
-        },
-        "0"
-      );
+      tl.fromTo(".my-slider", { x: 0 }, { xPercent: -330, duration: 10 }, "0");
+      tl.fromTo(".custom-line", { left: 0, width: 30 }, { width: "100%", duration: 11 }, "0");
     });
+
     mm.add("(min-width:650px) and (max-width:999.99px)", () => {
-      tl.fromTo(
-        ".my-slider",
-        {
-          x: 0,
-        },
-        {
-          xPercent: -320,
-          duration: 10,
-        },
-        "0"
-      );
-      tl.fromTo(
-        ".custom-line",
-        {
-          left: 0,
-          width: 50,
-        },
-        {
-          width: "100%",
-          duration: 11,
-        },
-        "0"
-      );
+      tl.fromTo(".my-slider", { x: 0 }, { xPercent: -320, duration: 10 }, "0");
+      tl.fromTo(".custom-line", { left: 0, width: 50 }, { width: "100%", duration: 11 }, "0");
     });
+
     mm.add("(min-width:300px) and (max-width:649.99px)", () => {
-      tl.fromTo(
-        ".my-slider",
-        {
-          x: 0,
-        },
-        {
-          xPercent: -340,
-          duration: 10,
-        },
-        "0"
-      );
-      tl.fromTo(
-        ".custom-line",
-        {
-          left: 0,
-          width: 50,
-        },
-        {
-          width: "100%",
-          duration: 11,
-        },
-        "0"
-      );
+      tl.fromTo(".my-slider", { x: 0 }, { xPercent: -340, duration: 10 }, "0");
+      tl.fromTo(".custom-line", { left: 0, width: 50 }, { width: "100%", duration: 11 }, "0");
     });
-  });
+  }, []);
 
   return (
     <>
@@ -156,10 +62,8 @@ const RoadmapSlider: React.FC = () => {
           </span>
         </Link>
       </div>
-      <div
-        id="hero"
-        className="bg-black pt-[156px] max-lg:pt-32 max-sm:pt-28 pb-28 overflow-hidden min-h-screen"
-      >
+
+      <div id="hero" className="bg-black pt-[156px] max-lg:pt-32 max-sm:pt-28 pb-28 overflow-hidden min-h-screen">
         <div className="max-w-[1172px] mx-auto px-4">
           <h2 className="max-w-[830px] mx-auto font-medium text-5xl max-md:text-4xl max-sm:text-3xl leading-[57.6px] text-white text-center">
             Transforming Secure, Modern{" "}
@@ -168,21 +72,29 @@ const RoadmapSlider: React.FC = () => {
             </span>{" "}
             with AdaptsAI
           </h2>
+
           <div className="flex items-center justify-between pt-[60px]">
             {PROGRESS_ICONS.map((obj, i) => (
               <div key={i} className="relative flex flex-col items-center cursor-pointer">
                 <div
-                  className={`flex items-center justify-center px-4 py-[18px] rounded-lg border-2 border-gray-600 transition-all `}
+                  className={`flex items-center justify-center px-4 py-[18px] rounded-lg border-2 transition-all ${activeIcon === i ? "border-white bg-gradient-to-r from-pink to-sky-blue" : "border-gray-600"
+                    }`}
                 >
-                  <img src={obj.img} alt={obj.alt} />
+                  <img
+                    src={obj.img}
+                    alt={obj.alt}
+                    className={`w-8 h-8 transition-all ${activeIcon === i ? "filter brightness-0 invert" : ""}`}
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
+
         <div className="h-[1px] bg-light-gray line mt-3 max-w-[1440px] mx-auto">
           <div className="custom-line h-[1px] bg-gradient-to-r from-pink to-sky-blue mt-3 max-w-[1440px] "></div>
         </div>
+
         <div className="px-4 mx-auto w-full flex sm:gap-28 max-sm:gap-10 pt-[60px] max-md:pt-10 my-slider">
           {SLIDER_DATA.map((obj, i) => (
             <div
@@ -221,7 +133,6 @@ const RoadmapSlider: React.FC = () => {
       </div>
     </>
   );
-
 };
 
 export default RoadmapSlider;
